@@ -289,9 +289,9 @@ iHealthMap.loadLayer = function () {
 	console.log(dureUtil.respJsonData.filterGroups);
 	var layer = {};
 	iHealthMap.FilterDataArr = [];
+	console.log(dureUtil.respJsonData.filterGroups);
 		if (dureUtil.respJsonData.filterGroups != undefined) {
 			var filterGroupsData = dureUtil.respJsonData.filterGroups;
-
 			for (var i = 0; i < filterGroupsData.length; i++) {
 				if (filterGroupsData[i].filterGroupName == dureUtil.indicatorName) {
 					for (var j = 0; j < filterGroupsData[i].filterSubGroups.length; j++) {
@@ -304,10 +304,7 @@ iHealthMap.loadLayer = function () {
 				}
 			}
 		}
-		else {
-			dureUtil.respJsonData.filterGroups = dureUtil.impactStudiesValues.headerobjectivelist;
-			console.log(dureUtil.respJsonData.filterGroups);
-		}
+
 		console.log(iHealthMap.FilterDataArr);
 
 
@@ -412,6 +409,7 @@ iHealthMap.addStyle = function (layerFilter) {
 
 		// Check for the region if it exsist in array.
 		if ($.inArray(styling.filterParams, checkRegionFilterParams) > -1) {
+			
 			//console.log("Region Filter called.");
 			//console.log(styling.filterParams);
 			//console.log(iHealthMap.checkRegionFilterChange());
@@ -1546,8 +1544,15 @@ iHealthMap.createFilterLegend = function (filterValueArr) {
 
 		});
 		var countryListjson = JSON.stringify(x);
-		iHealthMap.clearLayer();
-		iHealthMap.map.addLayer(iHealthMap.ggl);
+		//iHealthMap.clearLayer();
+		iHealthMap.geojsonLayer.eachLayer(function (layer) {
+			console.log(x[0]);
+			if (layer.feature.properties.iso_a3 == x[0] || layer.feature.properties.iso_a3 == x[3] || layer.feature.properties.iso_a3 == x[8]) {
+				console.log("Success");
+				layer.setStyle({ 
+					fillColor: "#DE2929"})
+			}
+		});
 
 	}
 
