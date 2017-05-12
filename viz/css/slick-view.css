@@ -1,0 +1,57 @@
+/* 1025 changed to 3025 by swapnil */
+@media screen and (max-width: 3025px) {
+  .relative {
+	position: relative;
+  }
+  .row-offcanvas-right .sidebar-offcanvas {
+	right: -220px;
+  }
+  .row-offcanvas-left .sidebar-offcanvas {
+	left: -220px;
+  }
+  .row-offcanvas-right.active {
+	right: 220px;
+  }
+  .row-offcanvas-left.active {
+	left: 220px;
+  }
+  .sidebar-offcanvas {
+	left: 0;
+  }
+  body.fixed .sidebar-offcanvas {
+	margin-top: 50px;
+	left: -220px;
+  }
+  body.fixed .row-offcanvas-left.active .navbar {
+	left: 220px !important;
+	right: 0;
+  }
+  body.fixed .row-offcanvas-left.active .sidebar-offcanvas {
+	left: 0px;
+  }
+}
+
+/* 1025 changed to 3025 by swapnil */
+@media screen and (min-width: 3025px) {
+	.left-side {
+		top: 45px;
+	}
+	/*Right side strech mode*/
+	.right-side.strech {
+		margin-left: 0;
+	}
+	.right-side.strech > .content-header {
+		margin-top: 0px;
+	}	  
+	/* Left side collapse */
+	.left-side.collapse-left {
+		left: -220px;
+	}
+}
+
+/* 1025 changed to 3025 by swapnil */
+@media screen and (max-width: 3025px) {
+  .right-side {
+	margin-left: 0;
+  }
+}

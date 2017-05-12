@@ -1,0 +1,673 @@
+		<!-- CSS INCLUDE -->     
+        <link rel="stylesheet" type="text/css" id="theme" href="tab/css/theme-blue2.css"/>
+		<link rel="stylesheet" type="text/css" id="" href="tab/css/customstyles.css"/>
+		<link href="./application/style.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" id="" href="tab/assets/joyride/joyride-2.1.css"/>
+        <!-- START PAGE CONTAINER -->
+        <div class="page-container page-navigation-toggled">            
+            <!-- START PAGE SIDEBAR -->
+				<div class="page-sidebar">
+					<!-- START X-NAVIGATION -->
+					<ul class="x-navigation sidebar-menu">
+						<!-- <li class="xn-logo hidden-lg">
+							<a href="index.html"></a>
+							<a href="#" class="x-navigation-control"></a>
+						</li> -->                                      
+					</ul>
+					<!-- END X-NAVIGATION -->
+				</div>
+            <!-- END PAGE SIDEBAR -->
+            
+            <!-- PAGE CONTENT -->
+            <div class="page-content">                                                           
+                
+                <!-- PAGE CONTENT WRAPPER -->
+                <div class="page-content-wrap">                    
+                    <div class="row margin-lt-0 margin-rt-0" id="map-panel">
+						<div class="col-md-12 zindex-0">
+							<div class="panel panel-default tabs">
+                                <ul class="nav nav-tabs">									
+									<li>
+										<!-- START X-NAVIGATION VERTICAL -->
+										<ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+											<!-- TOGGLE NAVIGATION -->
+											<li class="xn-icon-button">
+												<a href="#" class="x-navigation-minimize" ><span class="fa fa-dedent"></span></a>
+											</li>					
+											<!-- END TOGGLE NAVIGATION -->
+											<!-- Logo -->
+											<li class="xn-search">						
+												<img src="tab/img/VH_sm2.png" class="img img-responsive"/>						
+											</li> 
+											<!-- END Logo -->
+										</ul>
+										<!-- END X-NAVIGATION VERTICAL --> 
+									</li>
+                                    <li class="active mapmarkerli">
+										<a href="#mapcontainer" data-toggle="tab"><i class="fa fa-map-marker"></i> Map </a>
+									</li>
+									<li class="chartli">
+										<a href="#chart" data-toggle="tab" id="chartshow"><i class="fa fa-bar-chart-o"></i> Chart</a>
+									</li>
+									<li class="tableli">
+										<a href="#ihealthTableContainer" data-toggle="tab" id="tableli"><i class="fa fa-table"></i> Data Sheet</a>
+									</li>
+									<li>
+										<!-- START BREADCRUMB -->
+										<ul class="breadcrumb">
+											<li><a href="#"> Home</a></li>                                        
+											<li class="active">Dashboard</li>
+										</ul>
+										<!-- END BREADCRUMB -->
+									</li>
+									<li class="xn-icon-button pull-right">																
+										<a id="login" href="#" class="dropdown-toggle menuDisplay" data-placement="left" data-original-title="Login" data-toggle="tooltip">
+											<i class="fa fa-user"></i>
+										</a>					
+									</li>
+									<li class="xn-icon-button pull-right">
+<!--    <a href="http://ivizard.org/help/" target="_blank" class="dropdown-toggle menuDisplay"  id="pageHelp" data-placement="bottom" data-toggle="tooltip" data-original-title="Help">
+    <i class="glyphicon glyphicon-info-sign"></i>
+</a> -->
+</li>
+<li class="xn-icon-button pull-right">																
+										<a id="" href="../" class="dropdown-toggle menuDisplay" data-placement="bottom" data-toggle="tooltip" data-original-title="Dashboard" data-placement="bottom" data-toggle="tooltip" data-original-title="">
+											<i class="fa fa-arrow-left"></i>
+										</a>					
+									</li>
+									<li class="xn-icon-button pull-right">                
+										  <a id="info" href="#" class="dropdown-toggle dataSourceBtn" data-placement="bottom" data-toggle="tooltip" data-original-title="Indicator definition & source" data-placement="bottom" data-toggle="tooltip">
+										   <i class="fa fa-info"></i>
+										  </a>     
+									</li>
+									
+									<li class="xn-icon-button pull-right">                
+										<a id="" href="#" class="dropdown-toggle dataSourceBtn1" data-placement="bottom" data-toggle="tooltip" data-original-title="Data Dictionary" data-placement="bottom" data-toggle="tooltip">
+										 <i class="fa fa-book"></i>
+										</a>     
+									 </li>
+
+<li class="xn-icon-button pull-right">                
+		 <a href="#"  class="menuDisplay dropdown-toggle" data-placement="bottom" data-original-title="Contact us" data-toggle="modal"  data-toggle="tooltip"  data-target="#contact-us-modal">
+      <i class="fa fa-envelope"></i>
+     </a> 
+	 <a href="http://bit.do/PCVstudies"  target="_blank" class="menuDisplay dropdown-toggle" data-placement="bottom" data-original-title="Submit Country Response"  data-toggle="tooltip" >
+      <i class="fa fa-paper-plane"></i>
+     </a> 
+	 <a href="videos.html" target="_blank" class="menuDisplay dropdown-toggle" data-placement="bottom" data-original-title="View video tutorials" data-toggle="tooltip">
+      <i class="fa fa-video-camera"></i>
+     </a> 
+     <a href="#" class="menuDisplay dropdown-toggle tourGuidePlay" data-placement="bottom" data-original-title="Guide" data-toggle="tooltip">
+      <i class="fa fa-play-circle"></i>
+     </a> 
+  
+          </li>
+
+									
+                                </ul>
+                                <div class="panel-body tab-content" >								
+									<div class="tab-pane active hideBeforePrint" id="mapcontainer">
+										<div class="panel panel-default">
+											<div class="panel-heading">
+											<!-- <h3 class="panel-title">Welcome to iVizard</h3> -->
+												<button class="btn btn-primary btn-xs dropdown-toggle locatorList hideOnCollapse countrylocatorBtn" style="margin-right: 5px;" data-toggle="tooltip" data-original-title="Locate Country">
+													<i class="iconSearch-search-2"></i>
+												</button>
+												<div class="pull-right countryList countrylocatorlist" style="display:none">
+													 <select class="countryPick countrylocatorPicker" data-live-search="true" title='Locate Country'>
+													 </select>
+												</div>
+											</div>
+											<div class="panel-body  padding-0">
+												
+												<div id="ihmap" class="divExportable mapExportable blockui"></div>
+												<!-- LEGEND GRID DIV -->
+												<div class="ui-grid-b divExportable legendPrintGrid mapExportable" id="lengendGrid"></div>
+												<div class="pull-right">
+													<ul class="panel-controls pull-right" style="position: absolute;top: 0;text-align:right;right:10px;padding-top:10px;">
+														<li class="dropdown">
+															<a href="#"  id="filgavi" class="dropdown-toggle bg-darkblue" data-toggle="dropdown" style="font-weight:bold;font-size:25px;"><span class="fa fa-ellipsis-v"></span></a>
+															<ul class="dropdown-menu">
+																<!-- <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span> Expand</a></li> -->
+																<li><a href="#" class="resetMap"><span class="fa fa-refresh"></span> Refresh Map</a></li>
+																<li><a href="#" class="gaviBtn"><span class="fa fa-filter"></span>GAVI</a></li>
+																<li id="filterBtn"><a href="#" class="" data-original-title="Filter" data-toggle="modal" data-target=".bs-example-modal-lg"><span class="fa fa-filter"></span> Filter</a></li>																
+																<!-- <li><a href="#" class="pull-right collapseBtn" data-widget="collapse" data-toggle="tooltip" title="" style="margin-right: 5px;" data-original-title="Collapse"><i class="fa fa-minus"></i></a></li> -->
+																<!-- <li><a href="#" class="printBtn" id="printMap"><i class="fa fa-file-pdf-o"></i>Download Map (PDF format)</a></li> -->
+																<li><a href="#" class="printBtn" id="imageMap"><i class="fa fa-file-image-o"></i>Download Map (JPG format)</a></li>
+																<!-- <li><a href="#" class=""><i class="fa fa-search"></i>Select Region</a><li> -->
+																
+																<li><a href="#" onclick=" return $('#map-panel').toggleFullScreen();" class=""><i class="fa fa-arrows-alt"></i>Full Screen</a><li>
+															</ul>     
+														</li>    
+													</ul>
+												</div>
+										
+											</div>                                    
+										</div>  
+                                    </div>
+                                    <div class="tab-pane hideBeforePrint" id="chart" >
+										<div class="box-body no-padding">
+											 <ul class="nav nav-tabs margin-tp-0" id="chartmyTab">
+												  <li class="nav active">
+													<a href="#chartContainer" data-toggle="tab">Indicator Chart</a>
+												  </li>
+												  <li class="nav">
+													<a href="#overlaychart" data-toggle="tab" class="overlayName">Overlay Chart</a>
+												</li>
+											 </ul>
+											   <!-- Tab panes -->
+											<div class="tab-content chartcontent1">
+												<div class="tab-pane fade in active highchartContainer divExportable" id="chartContainer" style="height:375px;">
+												</div>
+												<div class="tab-pane fade overlaybase-chartcontainer" id="overlaychart">
+													Please Select Overlay first if !
+												</div>
+											</div>
+											<!--High Chart -->
+		<!--   <div class="highchartContainer divExportable" id="chartContainer" style="width:100%;height:375px;"></div> -->
+											
+											
+										</div><!-- /.box-body -->  
+									</div>
+									<div class="tab-pane hideBeforePrint" id="ihealthTableContainer">
+										<div class="panel panel-default">
+										<div class="panel-heading ui-draggable-handle">
+												<div class="panel-title-box">
+													<h3></h3>   
+												</div>                                    
+												<ul class="panel-controls">
+													 <li><a href="#" class="bg-green exportXlsBtn" id="exportTable"><span class="fa fa-file-excel-o"></span></a></li>
+												</ul>                                    
+											</div>                                
+											<div class="panel-body">
+												<div class="table-responsive">
+													<table id="ihTable" class="table table-bordered table-striped">
+														<thead>
+															<tr></tr>
+														</thead>
+													</table>
+												</div>    
+											</div>                                    
+										</div>																			
+									</div>  									
+								</div>
+							</div>                            
+						</div>
+					</div>
+				</div>
+				<div class="common-modal modal fade" id="common-Modal1" tabindex="-1" role="dialog" aria-hidden="true">
+					<div class="modal-content">
+						<ul class="list-inline item-details">
+							<li><a href="#">Admin</a></li>
+							<li><a href="#">Themes</a></li>
+						</ul>
+					</div>
+				</div>                                             
+			</div>
+			<!-- END PAGE CONTENT WRAPPER -->                                
+		</div>            
+		<!-- END PAGE CONTENT -->	
+        <!-- END PAGE CONTAINER -->
+
+		<div id="ExportArea" class="row showBeforePrint" style="display:none;text-align:center;">
+			<!--canvas added for the print functionality on map -->
+			<canvas id="ihMapCanvas" style="border:1px solid black;background:#b3d9ff; margin: 0 auto;" class="canvasContainer"></canvas>
+			<!--canvas added for the print functionality on Chart-->
+			<canvas id="ihChartCanvas" style="border:1px solid; margin: 0 auto;" class="canvasContainer"></canvas>
+			<canvas id="imageExportCanvas" width="1400" height="760"></canvas>
+		</div>
+		
+        <!-- MESSAGE BOX-->
+        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+            <div class="mb-container">
+                <div class="mb-middle">
+                    <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
+                    <div class="mb-content">
+                        <p>Are you sure you want to log out?</p>                    
+                        <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
+                    </div>
+                    <div class="mb-footer">
+                        <div class="pull-right">
+                            <a href="#" class="btn btn-success btn-lg">Yes</a>
+                            <button class="btn btn-default btn-lg mb-control-close">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END MESSAGE BOX-->
+
+        <!-- START PRELOADS -->
+        
+        <!-- END PRELOADS -->                  
+<!--         <script type="text/javascript" src="tab/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+        <script type="text/javascript" src="tab/js/plugins/scrolltotop/scrolltopcontrol.js"></script>
+		<script type="text/javascript" src="tab/js/plugins/owl/owl.carousel.min.js"></script>
+		<script type="text/javascript" src="tab/js/plugins/moment.min.js"></script>
+		
+		<script type="text/javascript" src="tab/js/settings.js"></script>
+        <script type="text/javascript" src="tab/js/plugins.js"></script>        
+        <script type="text/javascript" src="tab/js/actions.js"></script> -->
+<ol id="joyRideTipContent">
+		<!--	<li data-id="login" data-text="Next" data-options="tipLocation:right">
+				<h2>Login Session</h2>
+				<p>Click to sign in/sign out</p>
+			</li>-->
+			<li data-class="mapmarkerli" data-button="Next">
+				<h2>Geo coded Map</h2>
+				<p>Click on a region to drill-down in data.</p>
+			</li>
+			<li data-class="chartli" data-button="Next">
+				<h2>Graphs/Charts</h2>
+				<p>  Click here to view the indicator you selected in graphical/chart form.</p>
+			</li>
+			<li data-class="tableli" data-button="Next">
+				<h2>Tabular Data</h2>
+				<p>Click here to view the indicator you selected and the results of your search query (with filters applied) in table form. You can also export the data table to Excel if you wish.</p>
+			</li>      
+			<li data-class="x-navigation-minimize" data-button="Next">
+				<h2>Indicators menu</h2>
+				<p>Click here to select the indicator you wish to visualize on the map</p>
+			</li>
+
+			<li data-id="info" data-button="Next" data-options="tipLocation:left">
+				<h2>Indicator Source</h2>
+				<p>Click here to see the definition and source for your selected indicator.<p>
+			</li>
+			<li data-class="dataSourceBtn1"  id="modalfull" data-button="Next" data-options="tipLocation:left">
+				<h2> Data dictionary</h2>
+				<p> Click here for the full data dictionary, which details the definitions and sources for all the indicators currently in VIEW-Hub.<p>
+			</li>
+			<li data-id="filgavi" class="ab" data-button="Next" data-options="tipLocation:left">
+				<h2>Filter</h2>
+				<p>Click here to customize your query. Only data for countries that meet your search criteria will be shown.</p>
+				<h2>Gavi highlight</h2>
+				<p>Click here to highlight Gavi countries within the current map view.</p>
+			</li>
+			<li data-class="marker1" data-button="Next" data-options="tipLocation:left">
+				<h2>Gavi highlight</h2>
+				<p>Click here to highlight Gavi countries within the current map view.</p>
+			</li>
+			<li data-class="leaflet-control-layers-toggle" data-button="Next" data-options="tipLocation:left">
+				<h2>Overlay</h2>
+				<p>Click here to add (or overlay) another indicator onto the base map (which is showing the indicator you selected on the indicators menu). This allows visualization of multiple data at once.</p>
+			</li>
+
+			<li data-class="tourGuidePlay" data-button="Close" >
+				<h2>Tour Complete</h2>
+				<p></p>
+			</li>
+
+		</ol>
+		
+<!-- 		<script type="text/javascript" src="tab/assets/joyride/jquery.cookie.js"></script>
+		<script type="text/javascript" src="tab/assets/joyride/modernizr.mq.js"></script>
+		<script type="text/javascript" src="tab/assets/joyride/jquery.joyride-2.1.js"></script> -->
+		
+		<!-- END TEMPLATE -->
+		<!-- END SCRIPTS --> 
+		
+		<div class="modal fade" id="year-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form action="#" method="post">
+						<div class="modal-body">
+								<div class="form-group">
+									<label>Select Year</label>
+									<select class="form-control yearSelect">
+										<option>Select an Year </option>
+
+									</select>
+								</div>
+						</div>
+					</form>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		
+		<!-- Modal Box Global Chart -->
+		<div class="modal fade" id="chart-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+			<div class="modal-dialog">
+
+				<div class="modal-content">
+					<div class="modal-header bg-primary box-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+							<h4 class="modal-title chartHeader"><i class="fa fa-bar-chart-o"></i> Charts</h4>
+					</div>
+					<div class="modal-body">
+					
+					<div class="nav-tabs-custom">
+						<ul class="nav nav-tabs">
+							<li class="active"><a href="#tab_1" id="chart-on-modal-title" data-toggle="tab">Periodic</a></li>
+							<li class=""><a href="#tab_2" data-toggle="tab"> World Level Comparison</a></li> 
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane active" id="tab_1">
+								<div id="provinceChart" style="width:93%;"></div>
+							</div><!-- /.tab-pane -->
+							<div class="tab-pane" id="tab_2">
+								<div id="provinceCompChart" style="width:93%;"></div>
+							</div><!-- /.tab-pane -->
+						</div><!-- /.tab-content -->
+					</div>
+						  
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		
+		<div class="modal fade bs-example-modal-lg"  tabindex="-1" id = "filterModal" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+
+					<!--Filter content starts here -->
+
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+					</div>
+					<div class="buttonContainer" style="text-align:center;margin-top:20px;margin-bottom: 20px;">
+						<button type="button" id="applyFilterBtn" data-loading-text="Apply" class="btn btn-primary btn-success" autocomplete="off" style="width:40%">
+							Apply
+						</button>
+						<button type="button" id="clearFilterBtn" data-loading-text="Clear" class="btn btn-primary btn-warning" autocomplete="off" style="width:40%">
+							Clear
+						</button>
+					</div>
+
+					<!--filter content ends here                                     -->
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="modal fade userFilterLayout" tabindex="-1" id="filterModal11" role="dialog" aria-labelledby="" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<button style="margin-right: 10px;" class="btn btn-default btn-sm  pull-right" type="button" id="sync-personal-settings"><span class="">Sync Now</span></button>
+						
+						<h4 class="modal-title"><span class="glyphicon glyphicon glyphicon-th-large" aria-hidden="true"></span>&nbsp; Personalization Settings</h4>
+					</div>
+					<!--Filter content starts here -->
+
+					<div class="box-body no-padding">
+						<ul class="nav nav-tabs" id="chartmyTab" style="margin-top: 0px;">
+							<li class="nav active"><a href="#layoutOptionContainer" data-toggle="tab"><span class="glyphicon glyphicon glyphicon-tags" aria-hidden="true"></span>&nbsp; Layout Options</a></li>
+							<li class="nav"><a href="#themeOptionContainer" data-toggle="tab" class="overlayName"><span class="glyphicon glyphicon glyphicon-tags" aria-hidden="true"></span> &nbsp; Theme Options</a></li>
+							<!-- <li class="nav"><a href="#compontentOptionContainer" data-toggle="tab" class="overlayName"><span class="glyphicon glyphicon glyphicon-tags" aria-hidden="true"></span> &nbsp;Components</a></li> -->
+							<li class="nav"><a href="#frequencyOptionContainer" data-toggle="tab" class="overlayName"><span class="glyphicon glyphicon glyphicon-tags" aria-hidden="true"></span>&nbsp; Frequency</a></li>
+						</ul>
+						<!-- Tab panes -->
+						<div class="tab-content" style="  background-color: #fff; height: 120px;">
+							<div class="tab-pane fade in active" id="layoutOptionContainer" style="">	
+								<div class="radio">
+								  <label>
+									<input type="radio" name="layoutOptionRadios"  value="tab">
+										Tab
+								  </label>
+								</div>
+								<div class="radio">
+								  <label>
+									<input type="radio" name="layoutOptionRadios" value="horizontal">
+										Slide
+								  </label>
+								</div>
+								<div class="radio">
+								  <label>
+									<input type="radio" name="layoutOptionRadios" value="vertical">
+										Vertical
+								  </label>
+								</div>																
+							</div>
+							
+							<div class="tab-pane fade" id="themeOptionContainer">
+								<div class="radio">
+								  <label>
+									<input type="radio" name="themeOptionRadios" value="black">
+										Black
+								  </label>
+								</div>
+								<div class="radio">
+								  <label>
+									<input type="radio" name="themeOptionRadios" value="blue">
+										Blue
+								  </label>
+								</div>
+								<div class="radio">
+								  <label>
+									<input type="radio" name="themeOptionRadios" value="red">
+										Red
+								  </label>
+								</div>
+								<div class="radio">
+								  <label>
+									<input type="radio" name="themeOptionRadios" value="green">
+										Green
+								  </label>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="compontentOptionContainer">
+									<div class="checkbox">
+									  <label>
+										<input type="checkbox" id="selectall" value="all">
+											Select All
+									  </label>
+									</div>
+									<div class="checkbox">
+									  <label>
+										<input type="checkbox" class="singleselection" value="sidemenu">
+											Side Menu
+									  </label>
+									</div>
+									<div class="checkbox">
+									  <label>
+										<input type="checkbox" class="singleselection" value="overviewpanel">
+											Overview Panel
+									  </label>
+									</div>
+									<div class="checkbox">
+									  <label>
+										<input type="checkbox" class="singleselection" value="map">
+											Map
+									  </label>
+									</div>
+									<div class="checkbox">
+									  <label>
+										<input type="checkbox" class="singleselection" value="chart">
+											Chart
+									  </label>
+									</div>
+							
+							</div>
+							<div class="tab-pane fade" id="frequencyOptionContainer">
+								<div class="radio">
+								  <label>
+									<input type="radio" name="frequencyRadios"  value="1">
+										1 day
+								  </label>
+								</div>
+								<div class="radio">
+								  <label>
+									<input type="radio" name="frequencyRadios"  value="7">
+										7 days
+								  </label>
+								</div>
+								<div class="radio">
+								  <label>
+									<input type="radio" name="frequencyRadios"  value="15">
+										15 days
+								  </label>
+								</div>								
+							</div>
+						</div>
+					</div>
+
+					<div class="panel-group" id="accordion-personal-settings" style="background-color: #fff; height: 70px; margin-top: -5px;" role="tablist" aria-multiselectable="true">
+						<div class="buttonContainer" style="text-align:center;margin-top:20px">
+							<button type="button" id="applyUserPersonalization" data-loading-text="Apply" class="btn btn-primary" autocomplete="off" style="width:40%">
+								Apply
+							</button>
+							<!-- <button type="button" id="clearFilterBtn" data-loading-text="Clear" class="btn btn-primary btn-warning" autocomplete="off" style="width:40%">
+								Clear
+							</button> -->
+						</div>
+					</div>
+					<!--filter content ends here                                     -->
+					
+				</div>
+			</div>
+		</div>
+		
+		<div id="login-modal" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="gridSystemModalLabel">Sign In</h4>
+					</div>
+					<div class="modal-body">						
+						<!-- Small boxes (Stat box) -->
+						<div class="container-fluid">						
+							<div class="form-box" id="login-box" >								
+								<form id="user-login" method="post">
+								<div class="row">
+									<div class="login-logo col-lg-6" style="padding: 0px 70px; margin: 0px auto 0px auto; float:none;">
+										<a href="#"><img src="img/ivizard2.png" class="img"/></a>
+									</div>									
+								</div>								
+								<div class="row">
+									<p style="color: #ff0000;text-align: center; margin-top:10px;"><b class="login-error"></b></p>
+									<div class="body col-lg-6" style="margin: 0px auto 0px auto; float:none;">
+										<div id="usernameWrapper" class="form-group">
+											<input id="username" type="text" name="username" class="form-control" placeholder="Username"/>
+										</div>
+										<div class="form-group">
+											<input id="password" type="password" name="password" class="form-control" placeholder="Password"/>
+										</div>										
+											<!-- <div class="form-group">
+												<input type="checkbox" name="remember_me"/> Remember me
+											</div> -->
+									</div>
+								</div>
+								<!-- <div class="row"><div class="col-lg-6"></div></div> -->
+								<div class="row">
+									<div class="footer col-lg-6" style="margin: 0px auto 0px auto; float:none;">
+										<button type="submit" class="btn bg-primary btn-block">Sign me in</button>
+									</div>
+								</div>
+								</form> 
+							</div>					
+						</div>						
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->	
+		
+		<!-- Map Filter (notification) start -->
+			<div class="modal fade" id="mapFilterNotificationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header" style="background: #1E7FB8; color: #ffffff;">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title" id="myModalLabel" style="text-align: center;">Filtered List </h4>
+						</div>
+						<div class="modal-body" id="printfiltered-list">
+
+							<div class="diaplayMetaInfo"> </div>
+							<div class="table-responsive">
+								<table class="table table-condensed" id="filteredlisting-display">
+								</table>
+							</div>									
+						</div>
+						<div class="modal-footer">
+							
+							<button type="button" onclick="Print('printfiltered-list','View-hub')" class="btn btn-default" id="" style="background-color: rgb(255, 255, 255) !important; border-radius: 0px !important;">Print</button>					
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--  Map Filter (notification) End -->
+			
+			 <div class="modal fade" id="dataSourceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-small">
+				 <div class="modal-content">
+				  <div class="modal-header" style="background: #1E7FB8; color: #ffffff;">
+				   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				   </button>
+				   <h4 class="modal-title" id="dataSourceLabel" style="text-align:center;">Data Source</h4>
+				  </div>
+				  <div class="modal-body" id="dataSourceContent"> 
+
+				  
+				  </div>
+				 </div>
+				</div>
+			   </div>
+			   
+			   <!-- Data Dictionary popup changes :START -->
+<div class="modal fade" id="dataSourceModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" style="width:80%;
+       height:80%;">
+    <div class="modal-content"  >
+      <div class="modal-header" style="background: #1E7FB8; color: #ffffff;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="dataSourceLabel1" style="text-align:center;">Data Dictionary</h4>
+      </div>
+      <div class="modal-body" id="dataSourceContent1"  style=" max-height:85%;  margin-top: 10px; margin-bottom:10px;  max-height:500px;"   >
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact us -->
+<div class="modal fade" id="contact-us-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content"  >
+      <div class="modal-header" style="background: #1E7FB8; color: #ffffff;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="" style="text-align:left;">Contact us</h4>
+      </div>
+      <div class="modal-body" id="">
+  
+      		<div class="jumbotron">
+      			    	<p class="">
+      			“If you have any questions or comments, or would like to notify us of any technical issues you are experiencing with <b>VIEW-hub</b>, please contact <a href="mailto:linh.nguyen@jhu.edu."><b>Linh Nguyen</b></a> at <b>IVAC </b>at <b>linh.nguyen@jhu.edu.</b> We welcome and appreciate your valuable feedback.”
+      				</p>
+      		</div>
+						
+
+      </div>
+    </div>
+  </div>
+</div>
+<script src="./dure/scripts/DureLogin.js"></script>
+<script type="text/javascript">
+  	//$("#dataSourceContent1").load("DataDictionaryTable.html"); 
+</script>
+<!-- Data Dictionary popup changes :END -->
+			
+		<script src="tab/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+		<script src="tab/js/plugins/scrolltotop/scrolltopcontrol.js"></script>
+		<script src="tab/js/plugins/owl/owl.carousel.min.js"></script>
+		<script src="tab/js/settings.js"></script>
+		<script src="tab/js/plugins.js"></script>
+		<script src="tab/js/actions.js"></script>
+		<script src="tab/assets/joyride/jquery.cookie.js"></script>
+		<script src="tab/assets/joyride/modernizr.mq.js"></script>
+		<script src="tab/assets/joyride/jquery.joyride-2.1.js"></script>
+		<script src="tab/js/custom.js"></script>
+		<script src="./dure/scripts/DureMenuTab.js"></script>
+		
+		<!-- <script src="./application/DureTabDependency.js"></script> -->
+		<script src="./dure/scripts/DureLogin.js"></script>
+		

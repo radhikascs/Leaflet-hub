@@ -1,0 +1,15 @@
+html,body{background:  #d2d6de !important;}
+.error {
+				color: red;
+			}
+			
+.form-box .body > .form-group > input, .form-box .footer > .form-group > input {
+  border: 1px solid #ccc;
+}
+.login-logo{margin-bottom:10px;}
+.spanicon{font-size:25px;margin-top:10px;}
+
+.form-box {
+  width: 360px;
+  margin: 90px auto 0 auto;
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="description" content=""/>
+        <link href="./application/style.css" rel="stylesheet" type="text/css" />
+    <!--     <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.css' rel='stylesheet' /> -->
+        <script src="http://maps.googleapis.com/maps/api/js?sensor=false&language=en&v=3.14"></script>
+        <!-- <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.js'></script> -->
+        <!-- <script src='./dure/libraries/headjs/head.min.js'></script> -->
+       <!--   <script src="./dure/scripts/DureUtil.js"></script>  -->
+        <!-- <script src="application/DureApplication.js"></script> -->
+		
+		<script src="dure/libraries/jquery/2.1.1/jquery.min.js"></script>
+		<script src="dure/libraries/jquery/plugins/jquery-migrate-1.1.1.js"></script>
+		<script src="dure/libraries/bootstrap/3.2/js/bootstrap.js"></script>
+		<script src="js/jquery-ui-1.10.3.min.js"></script>
+		<script src="dure/libraries/slick/slick.min.js"></script>
+		<script src="dure/libraries/touchpunch/jquery.ui.touch-punch.min.js"></script>
+		<script src="js/AdminLTE/app.js"></script>
+	
+        <title>View Hub</title>
+    </head>
+    <body class="skin-blue">
+        <!-- header logo: style can be found in header.less -->
+        <header class="header">
+            <span class="logo appName">
+                <!-- Add the class icon to your logo image or logo icon to add the margining -->
+            </span>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="navbar-right">
+					<ul class="nav navbar-nav">
+						<!-- Tasks: style can be found in dropdown.less -->
+						<li class="dropdown tasks-menu">
+							<a href="#" class="dropdown-toggle  menuDisplay"  id="pagePrinterDirect"  data-placement="bottom"  data-toggle="tooltip" data-original-title="Print">
+								<i class="fa fa-print"></i>
+                            </a>
+                            <a href="#" class="dropdown-toggle printBtn menuDisplay"  id="pagePrint" data-placement="bottom"  data-toggle="tooltip" data-original-title="Export">
+								<i class="fa fa-file-pdf-o"></i>
+                            </a>
+							<a href="#" class="dropdown-toggle menuDisplay refreshPage" data-placement="bottom"  data-toggle="tooltip" data-original-title="Refresh">
+								<i class="fa fa-refresh"></i>
+                            </a>
+                            <a id="login" href="login.html" class="dropdown-toggle menuDisplay">
+								<i class="fa fa-user"></i>
+                            </a>
+                        </li>                       
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="wrapper row-offcanvas row-offcanvas-left">
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="left-side sidebar-offcanvas" id="sidebar.html">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">                    
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        <li class="dashboard active">
+                            <a href="index.html">
+                                <i class="fa fa-dashboard"></i><span>Dashboard</span>
+                            </a>
+                        </li>
+						<li class="">
+							<a href="impact_studies.html">
+								<i class="fa fa-th"></i><span>Impact Studies</span>
+                            </a>
+                        </li>
+                    </ul>
+				</section>
+                <!-- /.sidebar -->
+            </aside>
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+					<h1>
+						<small class=" col-md-offset-4 col-xs-offset-4 col-sm-offset-4 targetTitle"></small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li class="active"><b>Impact Studies</b></li>
+                    </ol>
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <!-- Small boxes (Stat box) -->
+                    
+                    <div class="row hideBeforePrint">
+                        <section class="col-lg-12 connectedSortable">
+                            <div id="map-panel" class="box box-solid box-primary">
+                                <div  class="box-header" style="cursor: move;">                                  
+                                    <i class="fa fa-map-marker"></i>
+                                    <h3 class="box-title targetTitleOnMap">Map</h3>
+                                </div>
+                                <div  class="box-body" style="display: block;">
+                                    <div id="ihmap" class="divExportable mapExportable"><img width="100%" src="img/overlay.png"></div>
+                                    <!-- LEGEND GRID DIV -->
+                                    <!-- <div class="ui-grid-b divExportable legendPrintGrid mapExportable" id="lengendGrid"></div> -->
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+					<div class="row hideBeforePrint overlayChartRowContainer" style="display:none">
+						<section class="col-lg-12 connectedSortable ui-sortable">
+							<div  id="ihealthChartOnOverlay" class="box box-solid box-primary">
+								<div class="box-header">
+									<div class="pull-right box-tools">
+										<button class="btn btn-primary btn-sm collapseBtn" data-widget="collapse"><i class="fa fa-minus"></i></button>
+										<button onclick="$('#ihealthChartOnOverlay').toggleFullScreen();" class="btn btn-primary btn-sm  pull-right hideOnCollapse" data-toggle="tooltip" title="Fullscreen" data-original-title="Reset" ><i class="fa fa-arrows-alt"></i></button>
+									</div><!-- /. tools -->
+                                    <i class="fa fa-table"></i>
+                                    <h3 class="box-title targetTitleOnTable"></h3>
+								</div><!-- /.box-header -->
+								<div class="box-body table-responsive">
+									<!-- extra div for chart on overlay added by swapnil -->
+									<div class="highchartContainer1 divExportable" id="overlaychartContainer" style="height:375px;display:none"></div>
+                                    <!-- extra div for chart on overlay added by swapnil -->
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="row hideBeforePrint">
+                        <section class="col-lg-12 connectedSortable">
+                            <div class="box box-solid box-primary collapsed-box">
+                                <div class="box-header" style="cursor: move;">
+                                    <!-- tools box -->
+                                    <div class="pull-right box-tools">									
+                                        <button class="btn btn-primary btn-sm collapseBtn" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                                    </div><!-- /. tools -->
+                                    <i class="fa fa-bar-chart-o"></i>
+                                    <h3 class="box-title targetTitleOnChart">Chart</h3>
+                                </div><!-- /.box-header -->
+                                <div class="box-body no-padding" style="display: none;">
+                                    <!--High Chart -->
+									<div class="highchartContainer divExportable" id="chartContainer" style="height:375px;"></div>
+                                </div><!-- /.box-body -->
+                                <div class="box-footer text-black">
+                                    <div class="row hideBeforePrint"></div><!-- /.row -->
+								</div>
+							</div>
+						</section>
+                    </div>
+                    <div id="ihealthTableContainer" class="row hideBeforePrint">
+                        <section class="col-lg-12 connectedSortable ui-sortable">
+                            <div class="box box-solid box-primary collapsed-box">
+                                <div class="box-header">
+                                    
+									<i class="fa fa-table"></i>
+									<h3 class="box-title targetTitleOnTable">Tabular Data</h3>
+                                </div><!-- /.box-header -->
+                                <div class="box-body table-responsive" style="display: none;">
+                                    <table id="ihTable" class="table table-bordered table-striped">
+                                        <thead><tr></tr></thead>
+									</table>
+								</div>
+							</div>
+						</section>
+					</div>
+
+                    <!-- /.row (main row) -->
+				</section><!-- /.content -->
+			</aside><!-- /.right-side -->
+		</div><!-- ./wrapper -->
+	</body>
+</html>

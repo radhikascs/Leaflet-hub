@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="description" content=""/>
+        <link href="./application/style.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="./dure/scripts/DureConfigure.js"></script> 
+		<script type="text/javascript" src='./dure/libraries/headjs/head.min.js'></script>
+		<script type="text/javascript" src='./dure/libraries/jquery/2.1.1/jquery.min.js'></script>
+		<script type="text/javascript" src='./dure/libraries/jquery/plugins/jquery.validate.min.js'></script>
+		<link href="css/loginpage.css" rel="stylesheet" type="text/css" />
+        <title>iVizard</title>
+    </head>
+    <body>
+		<!-- Small boxes (Stat box) -->
+		<div class="form-box" id="login-box" >
+			<div class="login-logo">
+				<a href="#"><img src="img/ivizard2.png" class="img"/></a>
+				<span class="pull-right spanicon"><a href="home.html"><i class="fa fa-home"></i></a></span>
+			</div>
+			<div class="header">Sign In</div>
+			<form id="login" method="post">
+				<div class="body">
+					<div id="usernameWrapper" class="form-group">
+						<input id="username" type="text" name="username" class="form-control" placeholder="Username"/>
+					</div>
+					<div class="form-group">
+						<input id="password" type="password" name="password" class="form-control" placeholder="Password"/>
+					</div>          
+					<div class="form-group">
+						<input type="checkbox" name="remember_me"/> Remember me
+					</div>
+				</div>
+				<div class="footer">                                                               
+					<button type="button" id="login-click" class="btn bg-primary btn-block">Sign me in</button>
+				</div>
+			</form> 
+		</div>
+
+		<script type="text/javascript">
+				$( document ).ready(function() {
+					
+					var baseURLContext = dureConfig.AppBaseURLContext; 
+					$("#facebook").attr("href", baseURLContext+"api/socialauth.do?id=facebook");
+					$("#twitter").attr("href", baseURLContext+"api/socialauth.do?id=twitter");
+					$("#googleplus").attr("href", baseURLContext+"api/socialauth.do?id=googleplus");
+					
+					
+				$('#login-click').click(function(){
+					
+					$("#login").submit(function(event) {
+						return false;
+							
+					}).validate({
+    
+							// Specify the validation rules
+							rules: {
+								username: "required",
+								password: {
+									required: true,
+									minlength: 3
+								}			
+							},
+							
+							// Specify the validation error messages
+							messages: {
+								username: "Please enter your user name",
+								password: {
+									required: "Please provide a password",
+									minlength: "Your password must be at least 5 characters long"
+								}							   
+							},
+							error: function(label) {
+							 $(this).addClass("error");
+						    },
+							submitHandler: function(form) {
+									
+								$(this).find(':submit').attr('disabled','disabled');
+								sendCORSRequest();
+								/* Send the data using post and put the results in a div */
+								/*$.ajax({
+									url: "http://localhost/ihealth/api/authenticateUser?callback="+callback,
+									type: "post",
+									dataType: "jsonp",
+									//contentType: 'application/json',
+									data: values,
+									jsonpCallback: callback,
+									crossDomain: true,
+									error: function(request, status, error) {
+										console.log( status );
+										console.log( error );
+									},
+									success: function(data) {
+										console.log( data );
+									}
+								});	*/	
+							}
+						});
+						$( "input" ).focusin(function() {
+							$('#login-error').remove();
+						});
+				});
+			});	
+			
+				function sendCORSRequest() {
+						var req;
+						var data = new FormData();
+						var username = $("#username").val();
+						var password = $("#password").val();
+						data.append('username', username);
+						data.append('password', password);
+						var encodedData = username+':'+password;
+						var authorizationToken = 'Basic '+window.btoa(encodedData);
+						var baseURLContext = dureConfig.AppBaseURLContext;
+						if(XMLHttpRequest) {
+							req = new XMLHttpRequest();																				
+							req.open("POST", baseURLContext+"api/authenticateiVizardUser", true);
+							
+							req.setRequestHeader("Authorization",authorizationToken);
+							req.onreadystatechange = function() {
+								if (req.readyState === 4) {
+									if (req.status >= 200 && req.status < 400) {
+										getLoginInfo(req.response);
+									} else {
+										console.log("Status", req.status +" "+req.statusText);
+									}
+									if(req.status == 401){
+										console.log("Invalid credentials");
+										authorizationError();
+									}
+								}
+							};
+							req.send(data);
+						
+						} else if(XDomainRequest) {
+							req = new XDomainRequest();
+							req.open("POST", baseURLContext+"api/authenticateUser");
+							req.setRequestHeader("Authorization",status);
+							req.onreadystatechange = function() {
+								if (req.readyState === 4) {
+									if (req.status >= 200 && req.status < 400) {
+										getLoginInfo(req.response);
+									} else {
+										console.log("Status", req.status + req.statusText);
+									}
+									if(req.status == 401){
+										console.log("Invalid credentials");
+										authorizationError();
+									}
+								}
+							};
+							req.send(data);
+						} else {
+							errback(new Error('Error in creating CORS request'));
+						}
+					} 
+					
+					function authorizationError(){
+						var errorelement = $( "<label>" )
+										.attr( "id","login-error" )
+												.addClass( "error" )
+												.html( "Invalid Credentials" );
+						$( errorelement ).insertBefore( "#usernameWrapper" );
+					}
+					
+					function getLoginInfo(response){
+                    $.each(JSON.parse(response), function(index, element) {
+						if(index == "verified" && element == true){
+							//Set authorization token in api calls
+							console.log(response);
+							var username = $("#username").val();
+							var password = $("#password").val();
+							var encodedData = username+':'+password;
+							var token = 'Basic '+window.btoa(encodedData);
+							localStorage.setItem("authorizationToken",token);
+							localStorage.setItem("userJson",response);
+							window.location.href = "home.html";
+						} else if(index == "verified" && element == false){
+							console.log("Invalid credentials");
+							var errorelement = $( "<label>" )
+								.attr( "id","login-error" )
+								.addClass( "error" )
+								.html( "Invalid Credentials" );
+							$( errorelement ).insertBefore( "#usernameWrapper" );
+						}
+					});
+				  }
+		</script>
+    </body>
+</html>

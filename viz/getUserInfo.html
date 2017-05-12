@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="description" content=""/>
+		<script type="text/javascript" src='./dure/libraries/jquery/2.1.1/jquery.min.js'></script>
+		<script type="text/javascript" src="./dure/scripts/DureConfigure.js"></script> 
+     <head>
+	 <body>	
+		<script type="text/javascript">
+				$( document ).ready(function() {
+					sendCORSRequest();
+				});
+				
+
+				$.urlParam = function(name){
+					var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+					if (results==null){
+					   return null;
+					}
+					else{
+					   return results[1] || 0;
+					}
+				}
+
+
+				function sendCORSRequest() {
+						var req;
+						var data = new FormData();
+						var username = $.urlParam('username');
+						var password = '';
+						data.append('username', username);
+						data.append('password', password);
+						var encodedData = username+':'+password;
+						var authorizationToken = 'Basic '+window.btoa(encodedData);
+						var baseURLContext = dureConfig.AppBaseURLContext;
+						if(XMLHttpRequest) {
+							req = new XMLHttpRequest();
+							req.open("POST", baseURLContext+"api/authenticateUser", true);
+							req.withCredentials = true;
+							req.setRequestHeader("Authorization","Skip"+authorizationToken);
+							req.onreadystatechange = function() {
+								if (req.readyState === 4) {
+									if (req.status >= 200 && req.status < 400) {
+										getLoginInfo(req.response);
+									} else {
+										console.log("Status", req.status +" "+req.statusText);
+									}
+									if(req.status == 401){
+										console.log("Invalid credentials");
+									}
+								}
+							};
+							req.send(data);
+						
+						} else if(XDomainRequest) {
+							req = new XDomainRequest();
+							req.open("POST", baseURLContext+"api/authenticateUser");
+							req.setRequestHeader("Authorization",status);
+							req.onreadystatechange = function() {
+								if (req.readyState === 4) {
+									if (req.status >= 200 && req.status < 400) {
+										getLoginInfo(req.response);
+									} else {
+										console.log("Status", req.status + req.statusText);
+									}
+									if(req.status == 401){
+										console.log("Invalid credentials");
+										
+									}
+								}
+							};
+							req.send(data);
+						} else {
+							errback(new Error('Error in creating CORS request'));
+						}
+					} 
+					
+					function getLoginInfo(response){
+						var jsonObj = $.parseJSON(response);
+						if(jsonObj.verified != null && jsonObj.verified == true){
+							//Set authorization token in api calls
+								console.log(jsonObj);
+								var username = jsonObj.dummyusername;
+								var password = jsonObj.dummyusername;
+								var encodedData = username+':'+password;
+								var token = 'Basic '+window.btoa(encodedData);
+								localStorage.setItem("authorizationToken",token);
+								localStorage.setItem("userJson",response);
+								window.location.href = "home.html";
+						} else {
+							console.log("Invalid credentials");
+						}
+				    }
+		</script>
+    </body>
+</html>

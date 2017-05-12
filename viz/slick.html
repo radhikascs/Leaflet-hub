@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="description" content=""/>
+        <link href="./application/style.css" rel="stylesheet" type="text/css" />
+	<!-- 	<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.css' rel='stylesheet' /> -->
+        <script src="http://maps.googleapis.com/maps/api/js?sensor=false&language=en&v=3.14"></script>
+		<!-- <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.js'></script> -->
+        <script src='./dure/libraries/headjs/head.min.js'></script>
+        <!-- <script src="./dure/scripts/DureUtil.js"></script> -->
+        <script src="application/DureApplication.js"></script>
+        <title>iVizard</title>
+    </head>
+    <body class="skin-blue">
+        <!-- header logo: style can be found in header.less -->
+        <header class="header">
+            <span class="logoKenya appName">
+                <!-- Add the class icon to your logo image or logo icon to add the margining -->
+            </span>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav">
+                        <!-- Messages: style can be found in dropdown.less-->
+                        <!--                        <li class="dropdown messages-menu">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                        <i class="fa fa-envelope"></i>
+                                                        <span class="label label-success">4</span>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li class="header">You have 4 messages</li>
+                                                        <li>
+                                                             inner menu: contains the actual data 
+                                                            <ul class="menu">
+                                                                <li> start message 
+                                                                    <a href="#">
+                                                                        <div class="pull-left">
+                                                                            <img src="img/avatar3.png" class="img-circle" alt="User Image"/>
+                                                                        </div>
+                                                                        <h4>
+                                                                            Support Team
+                                                                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                                                        </h4>
+                                                                        <p>Why not buy a new awesome theme?</p>
+                                                                    </a>
+                                                                </li> end message 
+                                                                <li>
+                                                                    <a href="#">
+                                                                        <div class="pull-left">
+                                                                            <img src="img/avatar2.png" class="img-circle" alt="user image"/>
+                                                                        </div>
+                                                                        <h4>
+                                                                            AdminLTE Design Team
+                                                                            <small><i class="fa fa-clock-o"></i> 2 hours</small>
+                                                                        </h4>
+                                                                        <p>Why not buy a new awesome theme?</p>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#">
+                                                                        <div class="pull-left">
+                                                                            <img src="img/avatar.png" class="img-circle" alt="user image"/>
+                                                                        </div>
+                                                                        <h4>
+                                                                            Developers
+                                                                            <small><i class="fa fa-clock-o"></i> Today</small>
+                                                                        </h4>
+                                                                        <p>Why not buy a new awesome theme?</p>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#">
+                                                                        <div class="pull-left">
+                                                                            <img src="img/avatar2.png" class="img-circle" alt="user image"/>
+                                                                        </div>
+                                                                        <h4>
+                                                                            Sales Department
+                                                                            <small><i class="fa fa-clock-o"></i> Yesterday</small>
+                                                                        </h4>
+                                                                        <p>Why not buy a new awesome theme?</p>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#">
+                                                                        <div class="pull-left">
+                                                                            <img src="img/avatar.png" class="img-circle" alt="user image"/>
+                                                                        </div>
+                                                                        <h4>
+                                                                            Reviewers
+                                                                            <small><i class="fa fa-clock-o"></i> 2 days</small>
+                                                                        </h4>
+                                                                        <p>Why not buy a new awesome theme?</p>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="footer"><a href="#">See All Messages</a></li>
+                                                    </ul>
+                                                </li>-->
+                        <!-- Notifications: style can be found in dropdown.less -->
+                        <!--                        <li class="dropdown notifications-menu">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                        <i class="fa fa-warning"></i>
+                                                        <span class="label label-warning">10</span>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li class="header">You have 10 notifications</li>
+                                                        <li>
+                                                             inner menu: contains the actual data 
+                                                            <ul class="menu">
+                                                                <li>
+                                                                    <a href="#">
+                                                                        <i class="ion ion-ios7-people info"></i> 5 new members joined today
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#">
+                                                                        <i class="fa fa-warning danger"></i> Very long description here that may not fit into the page and may cause design problems
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#">
+                                                                        <i class="fa fa-users warning"></i> 5 new members joined
+                                                                    </a>
+                                                                </li>
+                        
+                                                                <li>
+                                                                    <a href="#">
+                                                                        <i class="ion ion-ios7-cart success"></i> 25 sales made
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#">
+                                                                        <i class="ion ion-ios7-person danger"></i> You changed your username
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="footer"><a href="#">View all</a></li>
+                                                    </ul>
+                                                </li>-->
+                        <!-- Tasks: style can be found in dropdown.less -->
+                        <li class="dropdown tasks-menu">
+							<a href="#" class="dropdown-toggle  menuDisplay"  id="pagePrinterDirect"  data-placement="bottom"  data-toggle="tooltip" data-original-title="Print">
+                                <i class="fa fa-print"></i>
+       <!--                          <span class="label label-danger">9</span> -->
+                            </a>
+                            <a href="#" class="dropdown-toggle printBtn menuDisplay"  id="pagePrint" data-placement="bottom"  data-toggle="tooltip" data-original-title="Export">
+                                <i class="fa fa-file-pdf-o"></i>
+       <!--                          <span class="label label-danger">9</span> -->
+                            </a>
+       <a href="#" class="dropdown-toggle menuDisplay refreshPage" data-placement="bottom"  data-toggle="tooltip" data-original-title="Refresh">
+                                <i class="fa fa-refresh"></i>
+                            </a>
+							<a id="login" href="login.html" class="dropdown-toggle menuDisplay">
+                                <i class="fa fa-user"></i>
+                            </a>
+<!--                             <ul class="dropdown-menu">
+                                <li class="header">You have 9 tasks</li>
+                                <li>
+                                    
+                                    <ul class="menu">
+                                        <li><
+                                            <a href="#">
+                                                <h3>
+                                                    Design some buttons
+                                                    <small class="pull-right">20%</small>
+                                                </h3>
+                                                <div class="progress xs">
+                                                    <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                        <span class="sr-only">20% Complete</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <h3>
+                                                    Create a nice theme
+                                                    <small class="pull-right">40%</small>
+                                                </h3>
+                                                <div class="progress xs">
+                                                    <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                        <span class="sr-only">40% Complete</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <h3>
+                                                    Some task I need to do
+                                                    <small class="pull-right">60%</small>
+                                                </h3>
+                                                <div class="progress xs">
+                                                    <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                        <span class="sr-only">60% Complete</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <h3>
+                                                    Make beautiful transitions
+                                                    <small class="pull-right">80%</small>
+                                                </h3>
+                                                <div class="progress xs">
+                                                    <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                        <span class="sr-only">80% Complete</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="footer">
+                                    <a href="#">View all tasks</a>
+                                </li>
+                            </ul> -->
+                        </li>
+                        <!-- User Account: style can be found in dropdown.less -->
+<!--                         <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span>Shone Johnson  <i class="caret"></i></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="user-header bg-light-blue">
+                                    <img src="img/anonymous.jpg" class="img-circle" alt="User Image" />
+                                    <p>
+                                        Shone Johnson - Web Developer
+                                    </p>
+                                </li>
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li> -->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="wrapper row-offcanvas row-offcanvas-left">
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="left-side sidebar-offcanvas" id="sidebar.html">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+<!--                     <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="img/anonymous.jpg" class="img-circle" alt="User Image" />
+                        </div>
+                        <div class="pull-left info">
+                            <p>Hello, Guest</p>
+
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div> -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        <!-- <li class="dashboard active">
+                            <a href="index.html">
+                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            </a>
+                        </li> -->
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>              
+						<!-- bg-light-blue-gradient	-->
+						<small class=" col-md-offset-4 col-xs-offset-4 col-sm-offset-4 targetTitle"></small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-th"></i> Home</a></li>
+                        <li class="active">Dashboard</li>
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                    <!-- Small boxes (Stat box) -->
+                    <div class="row datarowprint">
+						<section class="col-lg-12 connectedSortable">
+							<div class="box box-solid box-primary divExportable" style="overflow:hidden;">
+								<div class="box-header" style="cursor: move;">
+									<!-- tools box -->
+									<div class="pull-right box-tools">
+										<button class="btn btn-primary btn-sm pull-right collapseBtn" data-widget="collapse" data-toggle="tooltip" title="" style="margin-right: 5px;" data-original-title="Collapse"><i class="fa fa-minus"></i></button>
+									</div><!-- /. tools -->
+
+									<i class="fa fa-line-chart"></i>
+									<h3 class="box-title">
+									   Overview
+									</h3>
+								</div>
+								<div class="box-body" style="display: block;">
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+										<!-- small box -->
+										<div class="small-box bg-aqua regionSummary_1">
+											<div class="inner" style="padding:3px">
+												<h3>
+													---
+												</h3>
+												<p>
+												</p>
+											</div>
+											<div class="icon" style="font-size:55px">
+												<i class="ion ion-stats-bars"></i>
+											</div>
+											<a href="#" class="small-box-footer">
+												<!-- <i class="fa fa-arrow-circle-right"></i> -->
+											</a>
+										</div>
+									</div><!-- ./col -->
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+										<!-- small box -->
+										<div class="small-box bg-green regionSummary_2">
+											<div class="inner" style="padding:3px">
+												<h3>
+													---
+												</h3>
+												<p>
+													
+												</p>
+											</div>
+											<div class="icon" style="font-size:55px">
+												<i class="ion ion-stats-bars"></i>
+											</div>
+											<a href="#" class="small-box-footer">
+												<!-- <i class="fa fa-arrow-circle-right"></i> -->
+											</a>
+										</div>
+									</div><!-- ./col -->
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+										<!-- small box -->
+										<div class="small-box bg-yellow regionSummary_3">
+											<div class="inner" style="padding:3px">
+												<h3>
+													---
+												</h3>
+												<p>
+													
+												</p>
+											</div>
+											<div class="icon" style="font-size:55px">
+												<i class="ion ion-stats-bars"></i>
+											</div>
+											<a href="#" class="small-box-footer">
+												<!--  <i class="fa fa-arrow-circle-right"></i> -->
+											</a>
+										</div>
+									</div><!-- ./col -->
+								</div>
+							</div>
+						</section>
+                    </div><!-- /.row -->
+
+					<div class="carousel">
+                    <div class="row hideBeforePrint">
+                        <section class="col-lg-12 connectedSortable">
+                            <div id="map-panel" class="box box-solid box-primary">
+                                <div  class="box-header" style="cursor: move;">
+                                    <!-- tools box -->
+                                    <div class="pull-right box-tools">
+										<button class="btn btn-primary btn-sm pull-right collapseBtn" data-widget="collapse" data-toggle="tooltip" title="" style="margin-right: 5px;" data-original-title="Collapse"><i class="fa fa-minus"></i></button>
+										<button onclick="$('#map-panel').toggleFullScreen();" class="btn btn-primary btn-sm  pull-right hideOnCollapse" data-toggle="tooltip" title="Fullscreen" data-original-title="Reset" ><i class="fa fa-arrows-alt"></i></button>
+										<button class="btn btn-primary btn-sm  pull-right resetMap hideOnCollapse" data-toggle="tooltip" title="" data-original-title="Reset" ><i class="fa  fa-refresh"></i></button>
+										<button class="btn btn-primary btn-sm pull-right hideOnCollapse" title="Filter" style="margin-right: 5px;" data-original-title="Filter" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-filter"></i>
+										</button>
+										<button class="btn btn-primary btn-sm pull-right printBtn hideOnCollapse" id="printMap" title="" style="margin-right: 5px;" data-original-title="Export Map" data-toggle="tooltip" ><i class="fa fa-file-pdf-o"></i>
+										</button>
+										<button class="btn btn-primary btn-sm dropdown-toggle listBtn hideOnCollapse" style="margin-right: 5px;" data-toggle="tooltip" data-original-title="Select Region"><i class="fa fa-search"></i></button>
+										<div class="pull-right countryList" style="display:none">
+											 <select class="selectpicker countryPick" data-live-search="true" title='Select Region'>			 
+											 </select>
+										</div>
+
+
+
+                                    </div><!-- /. tools -->
+
+                                    <i class="fa fa-map-marker"></i>
+                                    <h3 class="box-title targetTitleOnMap">
+                                       Map
+                                    </h3>
+
+                                </div>
+                                <div  class="box-body" style="display: block;">
+
+                                    <div id="ihmap" class="divExportable mapExportable"></div> 
+									<!-- LEGEND GRID DIV -->
+									<div class="ui-grid-b divExportable legendPrintGrid mapExportable" id="lengendGrid">
+								 
+									</div>									
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="row hideBeforePrint">
+                        <section class="col-lg-12 connectedSortable">
+                            <div class="box box-solid box-primary" id="chart-panel">
+                                <div class="box-header" style="cursor: move;">
+									<!-- tools box -->
+                                    <div class="pull-right box-tools">
+										<button class="btn btn-primary btn-sm printBtn hideOnCollapse" id="printChart" data-toggle="tooltip" data-original-title="Export Chart"><i class="fa fa-file-pdf-o"></i></button>
+                                        <button class="btn btn-primary btn-sm collapseBtn" data-widget="collapse" data-toggle="tooltip" data-original-title="Collapse"><i class="fa fa-minus"></i></button>                                        
+                                        <button onclick="$('#chart-panel').toggleFullScreen();" class="btn btn-primary btn-sm  pull-right hideOnCollapse" data-toggle="tooltip" title="Fullscreen" data-original-title="Reset" ><i class="fa fa-arrows-alt"></i></button>
+                                    </div><!-- /. tools -->
+                                    <i class="fa fa-bar-chart-o"></i>
+                                    <h3 class="box-title targetTitleOnChart">Chart</h3>								
+
+                                </div><!-- /.box-header -->
+                                <div class="box-body no-padding">
+                                     <ul class="nav nav-tabs" id="chartmyTab">
+                                          <li class="nav active">
+											<a href="#chartContainer" data-toggle="tab">Indicator Chart</a>
+                                          </li>
+                                          <li class="nav">
+											<a href="#overlaychart" data-toggle="tab" class="overlayName">Overlay Chart</a>
+										</li>
+                                     </ul>
+                                       <!-- Tab panes -->
+                                    <div class="tab-content chartcontent">
+                                        <div class="tab-pane fade in active highchartContainer divExportable" id="chartContainer" style="height:375px;">
+                                        </div>
+                                        <div class="tab-pane fade overlaybase-chartcontainer" id="overlaychart">
+                                            Please Select Overlay first if !
+                                        </div>
+                                    </div>
+                                    <!--High Chart -->
+<!--   <div class="highchartContainer divExportable" id="chartContainer" style="width:100%;height:375px;"></div> -->
+									
+									
+                                </div><!-- /.box-body -->  
+                                <div class="box-footer text-black">
+                                    <div class="row hideBeforePrint">
+
+                                    </div><!-- /.row -->                                                                   
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+					<div id="ihealthTableContainer" class="row hideBeforePrint">
+						<section class="col-lg-12 connectedSortable ui-sortable">
+							<div class="box box-solid box-primary">
+								<div class="box-header">
+									<div class="pull-right box-tools">
+										<button class="btn btn-primary btn-sm exportXlsBtn hideOnCollapse" id="exportTable" title="" style="margin-right: 5px;" data-original-title="Export to Excel" data-toggle="tooltip" ><i class="fa fa-file-excel-o"></i></button>
+										<!-- <button class="btn btn-primary btn-sm exportBtn hideOnCollapse" id="exportTable" title="" style="margin-right: 5px;" data-original-title="Export to Excel" data-toggle="tooltip" ><i class="fa fa-file-pdf-o"></i></button> -->
+                                        <button class="btn btn-primary btn-sm collapseBtn" data-widget="collapse" data-toggle="tooltip" data-original-title="Collapse"><i class="fa fa-minus"></i></button>  
+										
+                                    </div><!-- /. tools -->
+									<i class="fa fa-table"></i>
+									<h3 class="box-title targetTitleOnTable">Tabular Data</h3>
+								</div><!-- /.box-header -->
+								<div class="box-body table-responsive">
+									<table id="ihTable" class="table table-bordered table-striped">
+										<thead>
+											<tr>
+											
+											</tr>
+										</thead>
+									</table>						
+								</div>
+							</div>
+						</section>
+					</div>
+					</div>
+					<!-- end of carousel div -->
+					 <div id="ExportArea" class="row showBeforePrint" style="display:none;text-align:center;">
+
+						<!--canvas added for the print functionality on map -->
+						<canvas id="ihMapCanvas" style="border:1px solid black;background:#b3d9ff; margin: 0 auto;" class="canvasContainer"></canvas>
+						<!--canvas added for the print functionality on Chart-->
+						<canvas id="ihChartCanvas" style="border:1px solid; margin: 0 auto;" class="canvasContainer"></canvas>
+
+					</div>
+					<!-- /.row (main row) -->
+
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+        </div><!-- ./wrapper -->
+
+		<div class="modal fade" id="year-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form action="#" method="post">
+						<div class="modal-body">
+								<div class="form-group">
+									<label>Select Year</label>
+									<select class="form-control yearSelect">
+										<option>Select an Year </option>
+
+									</select>
+								</div>
+						</div>
+					</form>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<div class="modal fade" id="chart-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+			<div class="modal-dialog">
+
+				<div class="modal-content">
+					<div class="modal-header bg-primary box-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+							<h4 class="modal-title chartHeader"><i class="fa fa-bar-chart-o"></i> Charts</h4>
+					</div>
+					<div class="modal-body">
+					
+					<div class="nav-tabs-custom">
+						<ul class="nav nav-tabs">
+							<li class="active"><a href="#tab_1" id="chart-on-modal-title" data-toggle="tab">Periodic</a></li>
+							<!-- <li class=""><a href="#tab_2" data-toggle="tab">Province Level Comparison</a></li> -->
+<!-- 							<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+									Dropdown <span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu">
+									<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+									<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+									<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+									<li role="presentation" class="divider"></li>
+									<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+								</ul>
+							</li> -->
+<!-- 							<li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li> -->
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane active" id="tab_1">
+								<div id="provinceChart" style="width:93%;"></div>
+							</div><!-- /.tab-pane -->
+							<div class="tab-pane" id="tab_2">
+								<div id="provinceCompChart" style="width:93%;"></div>
+							</div><!-- /.tab-pane -->
+						</div><!-- /.tab-content -->
+					</div>
+						  
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<div class="modal fade bs-example-modal-lg"  tabindex="-1" id = "filterModal" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+
+					<!--Filter content starts here -->
+
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+
+						<div class="buttonContainer" style="text-align:center;margin-top:20px">
+							<button type="button" id="applyFilterBtn" data-loading-text="Apply" class="btn btn-primary btn-success" autocomplete="off" style="width:40%">
+								Apply
+							</button>
+							<button type="button" id="clearFilterBtn" data-loading-text="Clear" class="btn btn-primary btn-warning" autocomplete="off" style="width:40%">
+								Clear
+							</button>
+						</div>
+
+					</div>
+
+
+					<!--filter content ends here                                     -->
+
+				</div>
+			</div>
+		</div>
+		<div class="modal fade userFilterLayout" tabindex="-1" id="filterModal11" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title"><span class="glyphicon glyphicon glyphicon-th-large" aria-hidden="true"></span>&nbsp; Personalization Settings</h4>
+				</div>
+                <!--Filter content starts here -->
+
+                <div class="box-body no-padding">
+					<ul class="nav nav-tabs" id="chartmyTab">
+                        <li class="nav active"><a href="#layoutOptionContainer" data-toggle="tab"><span class="glyphicon glyphicon glyphicon-tags" aria-hidden="true"></span>&nbsp; Layout Options</a></li>
+                        <li class="nav"><a href="#themeOptionContainer" data-toggle="tab" class="overlayName"><span class="glyphicon glyphicon glyphicon-tags" aria-hidden="true"></span> &nbsp; Theme Options</a></li>
+						<li class="nav"><a href="#compontentOptionContainer" data-toggle="tab" class="overlayName"><span class="glyphicon glyphicon glyphicon-tags" aria-hidden="true"></span> &nbsp;Components</a></li>
+						<li class="nav"><a href="#frequencyOptionContainer" data-toggle="tab" class="overlayName"><span class="glyphicon glyphicon glyphicon-tags" aria-hidden="true"></span>&nbsp; Frequency</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+						<div class="tab-pane fade in active" id="layoutOptionContainer" style="">	
+							<div class="radio">
+							  <label>
+								<input type="radio" name="layoutOptionRadios" value="vertical" id="">
+									Vertical
+							  </label>
+							</div>
+							<div class="radio">
+							  <label>
+								<input type="radio" name="layoutOptionRadios"  value="horizontal">
+									Horizontal
+							  </label>
+							</div>
+							<div class="radio">
+							  <label>
+								<input type="radio" name="layoutOptionRadios"  value="tab">
+									Tab
+							  </label>
+							</div>
+						</div>
+						
+                        <div class="tab-pane fade" id="themeOptionContainer">
+                            <div class="radio">
+							  <label>
+								<input type="radio" name="themeOptionRadios"  value="black" checked>
+									Black
+							  </label>
+							</div>
+							<div class="radio">
+							  <label>
+								<input type="radio" name="themeOptionRadios"  value="blue" checked>
+									Blue
+							  </label>
+							</div>
+							<div class="radio">
+							  <label>
+								<input type="radio" name="themeOptionRadios"  value="red" checked>
+									Red
+							  </label>
+							</div>
+							<div class="radio">
+							  <label>
+								<input type="radio" name="themeOptionRadios"  value="green" checked>
+									Green
+							  </label>
+							</div>
+                        </div>
+						<div class="tab-pane fade" id="compontentOptionContainer">
+                                <div class="checkbox">
+								  <label>
+									<input type="checkbox" id="selectall"value="all">
+										Select All
+								  </label>
+								</div>
+								<div class="checkbox">
+								  <label>
+									<input type="checkbox" class="singleselection" value="sidemenu">
+										Side Menu
+								  </label>
+								</div>
+								<div class="checkbox">
+								  <label>
+									<input type="checkbox" class="singleselection" value="overviewpanel">
+										Overview Panel
+								  </label>
+								</div>
+								<div class="checkbox">
+								  <label>
+									<input type="checkbox" class="singleselection" value="map">
+										Map
+								  </label>
+								</div>
+								<div class="checkbox">
+								  <label>
+									<input type="checkbox" class="singleselection" value="chart">
+										Chart
+								  </label>
+								</div>
+						
+                        </div>
+						<div class="tab-pane fade" id="frequencyOptionContainer">
+                                	<div class="radio">
+							  <label>
+								<input type="radio" name="frequencyRadios"  value="7" checked>
+									7 days
+							  </label>
+							</div>
+							<div class="radio">
+							  <label>
+								<input type="radio" name="frequencyRadios"  value="15" checked>
+									15 days
+							  </label>
+							</div>
+							<div class="radio">
+							  <label>
+								<input type="radio" name="frequencyRadios"  value="30" checked>
+									30 days
+							  </label>
+							</div>
+                        </div>
+                    </div>
+                </div>
+
+				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="buttonContainer" style="text-align:center;margin-top:20px">
+                        <button type="button" id="applyUserPersonalization" data-loading-text="Apply" class="btn btn-primary btn-success" autocomplete="off" style="width:40%">
+                            Apply
+                        </button>
+                        <button type="button" id="clearFilterBtn" data-loading-text="Clear" class="btn btn-primary btn-warning" autocomplete="off" style="width:40%">
+                            Clear
+                        </button>
+                    </div>
+                </div>
+                <!--filter content ends here                                     -->
+				
+            </div>
+        </div>
+    </div>
+	
+	<!--  Slick Changes : Start-->
+ 	<style type="text/css">
+        
+		/* 1025 changed to 3025 by swapnil */
+		@media screen and (max-width: 3025px) {
+		  .relative {
+			position: relative;
+		  }
+		  .row-offcanvas-right .sidebar-offcanvas {
+			right: -220px;
+		  }
+		  .row-offcanvas-left .sidebar-offcanvas {
+			left: -220px;
+		  }
+		  .row-offcanvas-right.active {
+			right: 220px;
+		  }
+		  .row-offcanvas-left.active {
+			left: 220px;
+		  }
+		  .sidebar-offcanvas {
+			left: 0;
+		  }
+		  body.fixed .sidebar-offcanvas {
+			margin-top: 50px;
+			left: -220px;
+		  }
+		  body.fixed .row-offcanvas-left.active .navbar {
+			left: 220px !important;
+			right: 0;
+		  }
+		  body.fixed .row-offcanvas-left.active .sidebar-offcanvas {
+			left: 0px;
+		  }
+		}
+
+		/* 1025 changed to 3025 by swapnil */
+		@media screen and (min-width: 3025px) {
+			.left-side {
+				top: 45px;
+			}
+			/*Right side strech mode*/
+			.right-side.strech {
+				margin-left: 0;
+			}
+			.right-side.strech > .content-header {
+				margin-top: 0px;
+			}	  
+			/* Left side collapse */
+			.left-side.collapse-left {
+				left: -220px;
+			}
+		}
+
+		/* 1025 changed to 3025 by swapnil */
+		@media screen and (max-width: 3025px) {
+		  .right-side {
+			margin-left: 0;
+		  }
+		}
+	</style>	
+	<!--  Slick Changes : End-->
+</body>
+</html>
